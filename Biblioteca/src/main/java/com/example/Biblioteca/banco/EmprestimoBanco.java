@@ -19,9 +19,9 @@ public class EmprestimoBanco {
         return new ArrayList<>(emprestimos);
     }
 
-    public List<Emprestimo> findByDataFinal(int dataFinal){
+    public List<Emprestimo> findByDataFinal(String dataFinal){
         return emprestimos.stream()
-                .filter(empres -> empres.getDataFim() == dataFinal )
+                .filter(empres -> empres.getDataFim().equals(dataFinal))
                 .toList();
     }
 
@@ -57,9 +57,9 @@ public boolean update(int idEmprestimo, Emprestimo emprestimo){
     return true;
 }
 
-public boolean updateCliente(int idEmprestimo, int idCliente, Cliente cliente){
+public boolean updateCliente(int idEmprestimo, Cliente cliente){
         Emprestimo emprestimoBd = emprestimos.stream()
-                .filter(e->e.getIdEmprestimo()==idEmprestimo)
+                .filter(e->e.getIdEmprestimo() == idEmprestimo)
                 .findFirst()
                 .orElse(null);
 
@@ -67,12 +67,20 @@ public boolean updateCliente(int idEmprestimo, int idCliente, Cliente cliente){
             return false;
         }
 
-        Cliente clienteBd = emprestimoBd.getCliente();
-        clienteBd.setIdCliente(cliente.getIdCliente());
-        clienteBd.setCpf(cliente.getCpf());
-        clienteBd.setEmail(cliente.getEmail());
-        clienteBd.setNome(cliente.getNome());
-        clienteBd.setTelefone(cliente.getTelefone());
+        emprestimoBd.getCliente().setIdCliente(cliente.getIdCliente());
+        emprestimoBd.getCliente().setNome(cliente.getNome());
+        emprestimoBd.getCliente().setCpf(cliente.getCpf());
+        emprestimoBd.getCliente().setTelefone(cliente.getTelefone());
+        emprestimoBd.getCliente().setEmail(cliente.getEmail());
+        return true;
+    }
+
+    public boolean delete(int idEmprestimo){
+        Emprestimo emprestimoBd = emprestimos.stream()
+                .filter(e -> e.getIdEmprestimo() == idEmprestimo)
+                .findFirst()
+                .orElse(null);
+        emprestimos.remove(emprestimoBd);
         return true;
     }
 

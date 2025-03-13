@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Emprestimo {
 
-    private Long idEmprestimo;
-    private int dataInicio;
-    private int dataFim;
+    private int idEmprestimo;
+    private String dataInicio;
+    private String dataFim;
     private ArrayList<Livro> livrosEmprestados;
     private Cliente cliente;
 
-    public Emprestimo(Long idEmprestimo, int dataInicio, int dataFim, ArrayList<Livro> livrosEmprestados, Cliente cliente) {
+    public Emprestimo(int idEmprestimo, String dataInicio, String dataFim, ArrayList<Livro> livrosEmprestados, Cliente cliente) {
         this.idEmprestimo = idEmprestimo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -20,27 +20,27 @@ public class Emprestimo {
 
     }
 
-    public Long getIdEmprestimo() {
+    public int getIdEmprestimo() {
         return idEmprestimo;
     }
 
-    public void setIdEmprestimo(Long idEmprestimo) {
+    public void setIdEmprestimo(int idEmprestimo) {
         this.idEmprestimo = idEmprestimo;
     }
 
-    public int getDataInicio() {
+    public String getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(int dataInicio) {
+    public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public int getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(int dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 
